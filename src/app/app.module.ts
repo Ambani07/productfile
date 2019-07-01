@@ -1,19 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { RouterModule, Routes} from '@angular/router';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatButtonModule, MatToolbarModule, MatSidenavModule, MatIconModule, MatListModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+import { MatButtonModule, MatToolbarModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { DataTableComponent } from './data-table/data-table.component';
+// import { DataTableComponent } from './data-table/data-table.component';
+import { AdminModule } from './admin/admin.module';
 
+
+const routes: Routes = [
+  {path: '', redirectTo: '/admin', pathMatch: 'full'},
+]
 @NgModule({
   declarations: [
     AppComponent,
     MainNavComponent,
-    DataTableComponent
+    // DataTableComponent,
+    // AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -24,9 +30,8 @@ import { DataTableComponent } from './data-table/data-table.component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule
+    AdminModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
