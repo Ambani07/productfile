@@ -1,4 +1,5 @@
 const Customer = require('./models/customers');
+const User = require('./models/user');
 
 class FakeDb {
     constructor(){
@@ -40,26 +41,38 @@ class FakeDb {
             contactPersonCellNumber: '0123456789',
             category: 'BCX DI',
             term: 2
+        }];
+
+        this.users = [{
+            username : "Test User",
+            role : "PMO",
+            email : "test@gmail.com",
+            password : "testtest" 
         }]
     }
 
     async cleanDb(){
+        await User.remove({});
         await Customer.remove({});
     }
 
-    pushCustomersToDb(){
+    pushDataToDb(){
+        const user = new User(this.users[0]);
         //iterate
         this.customers.forEach((customer) => {
-
             const newCustomer = new Customer(customer);
+            newCustomer.user = user;
 
+            user.customers.push(newCustomer);
             newCustomer.save();
-        })
+        });
+
+        user.save();
     }
 
-    seedDb(){
-        this.cleanDb();
-        this.pushCustomersToDb();
+    async seedDb(){
+        await this.cleanDb();
+        this.pushDataToDb();
     }
 }
 

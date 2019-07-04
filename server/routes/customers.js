@@ -2,6 +2,11 @@ const express = require('express');
 const router = express.Router();
 const Customer = require('../models/customers');
 
+const UserCrl = require('../controllers/user');
+
+router.get('/secret', UserCrl.authMiddleware , function(req, res){
+    return res.json({"secret": true});
+});
 
 router.get('', function(req, res){
     Customer.find({}, function(err, foundCustomers){

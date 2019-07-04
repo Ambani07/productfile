@@ -1,20 +1,25 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 const config = require('./config/dev');
-const Customer = require('./models/customers');
 const FakeDb = require('./fake-db');
 
-const customerRoutes = require('./routes/customers');
+const customerRoutes = require('./routes/customers'),
+      userRouts = require('./routes/users');
 
 mongoose.connect(config.DB_URI, { useNewUrlParser: true }).then(() => {
     const fakeDb = new FakeDb();
-    fakeDb.seedDb();
+    // fakeDb.seedDb();
 });
 
 //instantiate Express
 const app = express();
 
+//middleware that handles user input before it can be routed
+app.use(bodyParser.json());
+
 app.use('/api/v1/customers', customerRoutes);
+app.use('/api/v1/users', userRouts);
 
 //routes
 app.get('/rentals', function(req, res){
