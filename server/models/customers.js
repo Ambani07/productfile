@@ -13,7 +13,8 @@ const customerSchema = new Schema({
     contactPersonCellNumber: {type: String, required: true, max: [10, 'Too long, max is 10 numbers']},
     category: {type: String, required: true, lowercase: true},
     term: Number,
-    createdAt: {type: Date, default: Date.now }
+    createdAt: {type: Date, default: Date.now },
+    user: {type: Schema.Types.ObjectId, ref: 'User'},
 }, {collection: "Customer"});
 
 module.exports = mongoose.model('Customer', customerSchema);
