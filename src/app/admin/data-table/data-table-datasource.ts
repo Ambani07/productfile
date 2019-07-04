@@ -6,17 +6,30 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 // TODO: Replace this with your own data model type
 export interface DataTableItem {
   name: string;
-  id: number;
-  amount: number;
+  surname: string;
+  contactEmail: string;
+  companyName: string;
+  productType: string;
+  createdAt: string;
 }
 
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: DataTableItem[] = [
-  {id: 1, name: 'Hydrogen', amount: 10},
-  {id: 2, name: 'Helium', amount: 10},
-  {id: 3, name: 'Lithium', amount: 10},
-  {id: 4, name: 'Beryllium', amount: 10},
-  {id: 5, name: 'Boron', amount: 10}
+  
+  {name: 'Ambani',
+  surname: 'Matsedu',
+  contactEmail: 'ambani@gmail.com',
+  companyName: 'BCX',
+  productType: 'Enterprise Internet',
+  createdAt: '01/07/2019'},
+  {name: 'Ambani', surname: 'Matsedu', contactEmail: 'ambani@gmail.com',companyName: 'BCX',  productType: 'Enterprise Internet', createdAt: '01/07/2019'},
+  {name: 'Ambani', surname: 'Matsedu', contactEmail: 'ambani@gmail.com',companyName: 'BCX',  productType: 'Enterprise Internet', createdAt: '01/07/2019'},
+  {name: 'Ambani', surname: 'Matsedu', contactEmail: 'ambani@gmail.com',companyName: 'BCX',  productType: 'Enterprise Internet', createdAt: '01/07/2019'},
+  {name: 'Ambani', surname: 'Matsedu', contactEmail: 'ambani@gmail.com',companyName: 'BCX',  productType: 'Enterprise Internet', createdAt: '01/07/2019'},
+  {name: 'Ambani', surname: 'Matsedu', contactEmail: 'ambani@gmail.com',companyName: 'BCX',  productType: 'Enterprise Internet', createdAt: '01/07/2019'},
+  {name: 'Ambani', surname: 'Matsedu', contactEmail: 'ambani@gmail.com',companyName: 'BCX',  productType: 'Enterprise Internet', createdAt: '01/07/2019'},
+  {name: 'Ambani', surname: 'Matsedu', contactEmail: 'ambani@gmail.com',companyName: 'BCX',  productType: 'Enterprise Internet', createdAt: '01/07/2019'},
+  {name: 'Ambani', surname: 'Matsedu', contactEmail: 'ambani@gmail.com',companyName: 'BCX',  productType: 'Enterprise Internet', createdAt: '01/07/2019'}
 ];
 
 /**
@@ -80,8 +93,11 @@ export class DataTableDataSource extends DataSource<DataTableItem> {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
         case 'name': return compare(a.name, b.name, isAsc);
-        case 'amount': return compare(+a.amount, +b.amount, isAsc); 
-        case 'id': return compare(+a.id, +b.id, isAsc);
+        case 'surname': return compare(+a.surname, +b.surname, isAsc);
+        case 'contactEmail': return compare(+a.contactEmail, +b.contactEmail, isAsc);
+        case 'companyName': return compare(+a.companyName, +b.companyName, isAsc);
+        case 'productType': return compare(+a.productType, +b.productType, isAsc);
+        case 'createdAt': return compare(+a.createdAt, +b.createdAt, isAsc);
         default: return 0;
       }
     });
