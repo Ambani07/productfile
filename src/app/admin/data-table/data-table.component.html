@@ -1,3 +1,7 @@
+<button mat-raised-button class="primary btn-customer" routerLink="/admin/customer-add">Add Customer</button>
+<div class="mat-elevation-z8 data-table">
+</div>
+
 <div class="mat-elevation-z8 data-table">
   
   <table mat-table class="full-width-table" matSort aria-label="Elements">
@@ -46,6 +50,6 @@
       [length]="dataSource?.data.length"
       [pageIndex]="0"
       [pageSize]="50"
-      [pageSizeOptions]="[2, 25, 50, 100, 250]">
+      [pageSizeOptions]="[5, 10, 15, 20, 25]">
   </mat-paginator>
 </div>
