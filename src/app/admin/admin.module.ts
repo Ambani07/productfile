@@ -1,14 +1,22 @@
 import { NgModule } from '@angular/core';
 import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { DataTableComponent } from './data-table/data-table.component';
 import { CustomersComponent } from './customers/customers.component';
 import { RouterModule, Routes } from '@angular/router';
 
+
 import { AdminComponent } from './admin.component';
-import { MatButtonModule } from '@angular/material';
+import {MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatOptionModule,
+        MatSelectModule,
+        MatCardModule } from '@angular/material';
+
 const routes: Routes = [
-    {path: 'admin', 
+    {path: 'admin',
     component: AdminComponent,
     children: [
         {path: '', component: DataTableComponent},
@@ -27,7 +35,14 @@ const routes: Routes = [
     MatPaginatorModule,
     MatSortModule,
     RouterModule.forRoot(routes),
-    MatButtonModule],
+    MatButtonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatCardModule],
   providers: [],
   bootstrap: []
 })

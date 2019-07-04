@@ -4,7 +4,13 @@ import { RouterModule, Routes} from '@angular/router';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatButtonModule, MatToolbarModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
+import {  MatButtonModule, 
+          MatToolbarModule,
+          MatSidenavModule,
+          MatIconModule,
+          MatListModule,
+          MatMenuModule,
+        } from '@angular/material';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 // import { DataTableComponent } from './data-table/data-table.component';
@@ -31,6 +37,7 @@ const routes: Routes = [
     MatIconModule,
     MatListModule,
     AdminModule,
+    MatMenuModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],
